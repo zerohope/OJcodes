@@ -1,2 +1,2 @@
 # OJcodes
-some interesting or difficultquestions write by java
+some interesting or difficult questions write by java
