@@ -1,0 +1,29 @@
+class Solution {
+    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        //起点，结果，字符种类
+        int rs=0,cls=0;
+        String temp="";
+        if(k==0)
+         return 0;
+        for(int ep=0;ep<s.length();ep++){
+            if(!temp.contains(String.valueOf(s.charAt(ep)))){
+                if(cls<k){
+                    temp+=s.charAt(ep);
+                }else{
+                   while(cls>=k){
+                    String f=String.valueOf(temp.charAt(0));
+                    temp=temp.substring(1);
+                    if(!temp.contains(f))
+                    cls--;
+                   }
+                   temp+=s.charAt(ep);
+                }
+                cls++;
+            }else{
+                temp+=s.charAt(ep);
+            }
+              rs=Math.max(rs,temp.length());
+        }
+        return rs;
+    }
+}
