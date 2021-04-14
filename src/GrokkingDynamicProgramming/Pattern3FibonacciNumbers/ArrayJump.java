@@ -22,13 +22,37 @@ public class ArrayJump {
        memory[idx]=totalCount;
        return totalCount;
    }
+  public int dpSolve(int[] jumps){
+        int[] dp=new int[jumps.length];
+      /*  for(int i=jumps.length-2;i>=0;i--){
+            int st=i+1,ed=i+jumps[i];
+            int temp=Integer.MAX_VALUE;
+            while(st<=ed&&st< jumps.length){
+                temp=Math.min(temp,dp[st++]);
+            }
+            if(temp!=Integer.MAX_VALUE)
+                dp[i]=temp+1;
+            else
+                dp[i]=temp;
+        }*/
+        for(int i=1;i<jumps.length;i++)
+            dp[i]=Integer.MAX_VALUE;
+        for(int i=0;i<jumps.length;i++){
+            int start=i+1, ed=i+jumps[i];
+            while(start<=ed&&start<jumps.length) {
+                dp[start] = Math.min(dp[start], dp[i] + 1);
+                start++;
+            }
+        }
 
+        return dp[jumps.length-1];
+  }
 
     public static void main(String[] args) {
         ArrayJump aj = new ArrayJump();
         int[] jumps = {2, 1, 1, 1, 4};
-        System.out.println(aj.countMinJumps(jumps));
+        System.out.println(aj.dpSolve(jumps));
         jumps = new int[]{1, 1, 3, 6, 9, 3, 0, 1, 3};
-        System.out.println(aj.countMinJumps(jumps));
+        System.out.println(aj.dpSolve(jumps));
     }
 }
