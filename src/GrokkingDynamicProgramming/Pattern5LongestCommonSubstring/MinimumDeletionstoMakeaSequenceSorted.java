@@ -1,7 +1,7 @@
 package GrokkingDynamicProgramming.Pattern5LongestCommonSubstring;
 
 public class MinimumDeletionstoMakeaSequenceSorted {
-    public int deleteNumbers(int[] nums,int pre,int cur){
+    public void deleteNumbers(int[] nums,int pre,int cur){
         // the same to LongestIncreasingSubsequence
     }
     public int dpSolver(int[] nums){
