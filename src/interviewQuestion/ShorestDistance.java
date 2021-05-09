@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class SPFA {
+public class ShorestDistance {
     static class Edge{
         int x,y,d;
         public Edge(int a, int b, int c){
@@ -15,33 +15,41 @@ public class SPFA {
     }
     static final int INF = Integer.MAX_VALUE >> 1;
     static int n,m;
-    static List<List<Edge>>  graph = new ArrayList<>();
+    static List<List<Edge>> graph = new ArrayList<>();
     static int[] dist;
     static boolean[] st;
-   public static void main(String[] args) throws Exception{
-       BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
-       String[] s = cin.readLine().split("\\s+");
-       n = Integer.parseInt(s[0]);
-       m = Integer.parseInt(s[1]);
-       st = new boolean[n];
-       dist = new int[n];
+    public static void main(String[] args) throws Exception{
+        BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
+        String[] s = cin.readLine().split("\\s+");
+        n = Integer.parseInt(s[0])+1;
+        m = Integer.parseInt(s[1]);
+        st = new boolean[n];
+        dist = new int[n];
         for( int i=0;i<n;i++)
             graph.add(new ArrayList<Edge>());
-       while (m-->0) {
-           String[] s1 = cin.readLine().split("\\s+");
-           int x = Integer.parseInt(s1[0]) - 1;
-           int y = Integer.parseInt(s1[1]) - 1;
-           int z = Integer.parseInt(s1[2]);
-           graph.get(x).add(new Edge(x, y, z));
-       }
+        while (m-->0) {
+            String[] s1 = cin.readLine().split("\\s+");
+            int x = Integer.parseInt(s1[0]);
+            int y = Integer.parseInt(s1[1]);
+            int z = Integer.parseInt(s1[2]);
+            graph.get(x).add(new Edge(x, y, z));
+            graph.get(y).add(new Edge(y, x, z));
+        }
+        String shop=cin.readLine();
+        int shopNb=Integer.parseInt(shop);
+        while(shopNb-->0){
+            int x=0;
+            int y=Integer.parseInt(cin.readLine());
+            int z=0;
+            graph.get(x).add(new Edge(x, y, z));
+        }
         int[] res=spfa();
-       if(res[n-1] == INF){
-           System.out.println("impossible");
-       }else{
-           System.out.println(res[n-1]);
-       }
+        int query=Integer.parseInt(cin.readLine());
+        while(query-->0){
+            System.out.println(res[Integer.parseInt(cin.readLine())]);
+        }
 
-   }
+    }
 
     static int[] spfa(){
         Arrays.fill(dist, INF);
@@ -68,5 +76,7 @@ public class SPFA {
         return dist;
 
     }
+
+
 
 }
