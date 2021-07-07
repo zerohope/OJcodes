@@ -29,6 +29,7 @@ public class NumericalCode {
         while(!q.isEmpty()){
            String temp=q.poll();
            int x,y;
+
            if(temp.equals(end))
                return state.get(end);
            int idx=temp.indexOf('x');
