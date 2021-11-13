@@ -2,7 +2,7 @@ package Euler;
 
 public class LatticePaths_15 {
     public static void main(String[] args){
-            long[][] d[22][22];
+            long[][] dp=new long[22][22];
             dp[0][0]=1;
             for(int i=1;i<22;i++){
                 dp[0][i]=dp[0][i-1];
