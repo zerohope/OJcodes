@@ -47,4 +47,33 @@ public class Recruitment {
         }
 
     }
+    //已经预计到模拟会超时了，夸张，头条的这个题要难不少
+    public static void simulationProcess(){
+        Scanner sc=new Scanner(System.in);
+        int step=sc.nextInt();
+        for(int i=0;i<step;i++){
+            int peoNbs=sc.nextInt();
+            boolean[] people=new boolean[peoNbs];
+            int[] nums=new int[sc.nextInt()];
+            for(int j=0;j<nums.length;j++)
+                nums[j]=sc.nextInt();
+            int flag=0;
+            int pidx=0;
+            int didx=0;
+            while(flag<peoNbs-1){
+                if(people[pidx])
+                    continue;
+
+
+
+
+            }
+
+
+
+        }
+
+
+    }
+
 }
